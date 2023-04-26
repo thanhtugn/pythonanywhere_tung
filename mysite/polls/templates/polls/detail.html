@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title> CHI TIET CAC CAU HOI</title>
+    </header>
+    <body>
+            <h1>{{question.question_text}}</h1>
+        
+            {% if error_message %}
+                <strong>{{ error_message}}</strong>
+            {% endif %}
+
+            <form action="{% url 'polls:vote' question.id %}" method="post">
+                {% csrf_token %}
+                {% for choice in question.choice_set.all %}
+                    <input type="radio" name="choice" id="choice{{ forloop.counter}}" value="{{choice.id}}"/>
+                    <label for="choice{{ forloop.counter}}">{{ choice.choice_text}}</label>
+                {% endfor %}
+                <input type="submit" value="Vote"/>
+            </form>
+    </body>
+</html>

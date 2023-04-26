@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <title> DANH SACH CAC CAU HOI</title>
+    </header>
+    <body>
+        <h1>DANH SACH CAC CAU HOI</h1>
+        {% if lastest_question_list %}
+            <ul>
+                {% for question in lastest_question_list  %}
+                    <li>
+                        <a href="/polls/{{question.id}}/">
+                            {{ question.question_text }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+        {% endif %}
+    </body>
+</html>

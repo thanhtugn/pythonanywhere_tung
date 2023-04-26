@@ -1,0 +1,39 @@
+<!DOCTYPE>
+<html>
+
+    <head>
+        <title>Phan Trang</title>
+    </head>
+    <body>
+        <table border="1px solid #000">
+            <tr>
+                <th>Customer Name</th>
+                <th>Country</th>
+            </tr>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.name }}</td>
+                <td>{{ customer.country }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <div class="pagination">
+            <span class="step-links">
+                {% if customers.has_previous %}
+                    <a href="?page={{ customers.previous_page_number }}">Previous</a>
+                {% endif %}
+            </span>
+
+            <span class="current">
+                Page {{ customers.number }} of {{ customers.paginators.num_pages }}    
+            </span>
+
+            <span>
+                {% if customers.has_next %}
+                    <a href="?page={{ customers.next_page_number }}"> Next</a>
+                {% endif %}
+            </span>
+
+        </div>
+    </body>
+</html>
